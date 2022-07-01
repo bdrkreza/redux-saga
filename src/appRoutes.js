@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import { AppLayout } from "./components";
 import Dashboard from "./pages/dashboard/Dashboard";
-import EditProduct from "./pages/products/editProduct";
+import ViewProduct from "./pages/products/components/viewProduct";
 import Products from "./pages/products/Products";
 
 export default function AppRoutes() {
@@ -11,7 +11,7 @@ export default function AppRoutes() {
         <Route path="/" element={<AppLayout />}>
           <Route index element={<Dashboard />} />
           <Route path="/product" element={<Products />} />
-          <Route path="edit_product" element={<EditProduct />} />
+          <Route path="/view_product" element={<ViewProduct />} />
         </Route>
       </Routes>
     </div>

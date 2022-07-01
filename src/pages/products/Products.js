@@ -3,8 +3,8 @@ import { FiCheck } from "react-icons/fi";
 import { useDispatch, useSelector } from "react-redux";
 import { getProduct } from "../../redux/slice/ProductSlice";
 import AddProduct from "./components/addProduct";
-
 import ProductCart from "./components/productCart";
+
 export default function Products() {
   const [open, setOpen] = useState(false);
   const { data } = useSelector((state) => state.products);
@@ -29,11 +29,17 @@ export default function Products() {
         </span>
       </div>
       <AddProduct setOpen={setOpen} open={open} />
-      <div className="flex flex-wrap gap-10">
-        {data?.map((product) => (
-          <ProductCart product={product} key={product.id} />
-        ))}
-      </div>
+      {data.length === 0 ? (
+        <div className="text-2xl font-bold text-pink-700 text-center">
+          No Data Found please reload page
+        </div>
+      ) : (
+        <div className="flex flex-wrap gap-10">
+          {data?.map((product) => (
+            <ProductCart product={product} key={product.id} />
+          ))}
+        </div>
+      )}
     </div>
   );
 }
