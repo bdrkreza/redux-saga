@@ -1,42 +1,10 @@
 import { Dialog, Transition } from "@headlessui/react";
-import { Fragment, useRef, useState } from "react";
-import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Fragment, useRef } from "react";
 import AddFormLayout from "./addFormLayout";
-const initialState = {
-  title: "test product",
-  description: "this beautiful man and woman",
-  price: "500",
-  category: "woman",
-  image: "https://i.pravatar.cc",
-};
 
 export default function AddProduct({ setOpen, open }) {
   const cancelButtonRef = useRef(null);
-  const navigate = useNavigate();
-  const [formValue, setFormValue] = useState(initialState);
-  const { title, description, price, category, image } = formValue;
-  const onChange = (e) => {
-    setFormValue({ ...formValue, [e.target.name]: e.target.value });
-  };
 
-  // redux use Selection hook
-  const productId = useSelector((state) => state.products.data.length);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const formData = {
-      id: productId + 1,
-      title,
-      description,
-      price,
-      category,
-      image,
-    };
-    console.log(formData);
-    // dispatch(createProduct(formData));
-    navigate("/product", { replace: true });
-  };
   return (
     <div>
       <Transition.Root show={open} as={Fragment}>
@@ -78,11 +46,7 @@ export default function AddProduct({ setOpen, open }) {
                           aria-hidden="true"
                         />
                       </div> */}
-                      <AddFormLayout
-                        onChange={onChange}
-                        handleSubmit={handleSubmit}
-                        setOpen={setOpen}
-                      />
+                      <AddFormLayout setOpen={setOpen} />
                     </div>
                   </div>
                 </Dialog.Panel>
