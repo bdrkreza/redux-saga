@@ -13,10 +13,16 @@ const productReducer = createSlice({
     getSearch(state, action) {
       state.status = "pending";
     },
-
+    createProduct(state, action) {
+      state.status = "pending";
+    },
     setProduct: (state, action) => {
       state.data = action.payload;
       state.status = "idle";
+    },
+
+    setAddProduct(state, action) {
+      state.data.push(action.payload);
     },
     setUpdate(state, action) {
       const {
@@ -52,7 +58,14 @@ const productReducer = createSlice({
   },
 });
 
-export const { setProduct, getProduct, setUpdate, getSearch, deleteProduct } =
-  productReducer.actions;
+export const {
+  setProduct,
+  getProduct,
+  setAddProduct,
+  setUpdate,
+  getSearch,
+  deleteProduct,
+  createProduct,
+} = productReducer.actions;
 
 export default productReducer.reducer;

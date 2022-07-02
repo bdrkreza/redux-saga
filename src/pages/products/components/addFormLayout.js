@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
-import { setUpdate } from "../../../redux/slice/ProductSlice";
+import { createProduct, setUpdate } from "../../../redux/slice/ProductSlice";
 
 const initialState = {
   title: "",
@@ -71,7 +71,8 @@ export default function AddFormLayout({ setOpen }) {
           thumbnail: "https://i.pravatar.cc",
           description,
         };
-        console.log(formData);
+        dispatch(createProduct(formData));
+
         setTimeout(() => setOpen(false), 500);
       } else {
         dispatch(setUpdate({ id, formUpdate }));
@@ -79,8 +80,6 @@ export default function AddFormLayout({ setOpen }) {
         setTimeout(() => setOpen(false), 500);
       }
     }
-
-    // dispatch(createProduct(formData));
     navigate("/product", { replace: true });
   };
   useEffect(() => {
@@ -95,7 +94,11 @@ export default function AddFormLayout({ setOpen }) {
         <div className="flex items-center justify-center mb-2">
           <span className="inline-block h-16 w-28 rounded-sm overflow-hidden bg-gray-100">
             {editMode ? (
-              <img class="rounded-t-lg w-full h-full " src={thumbnail} alt="" />
+              <img
+                className="rounded-t-lg w-full h-full "
+                src={thumbnail}
+                alt=""
+              />
             ) : (
               <svg
                 className="h-full w-full text-gray-300"
@@ -114,40 +117,34 @@ export default function AddFormLayout({ setOpen }) {
           </button>
         </div>
       </>
-      <form class="w-full max-w-lg" onSubmit={handleSubmit}>
-        <div class="flex flex-wrap -mx-3 mb-6 space-y-2">
-          <div class="w-full md:w-1/2 px-3 mt-2 ">
-            <label
-              class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-              for="grid-first-name"
-            >
+      <form className="w-full max-w-lg" onSubmit={handleSubmit}>
+        <div className="flex flex-wrap -mx-3 mb-6 space-y-2">
+          <div className="w-full md:w-1/2 px-3 mt-2 ">
+            <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
               Product Name
             </label>
             <input
               onChange={onChange}
               value={title || ""}
-              class="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4  leading-tight focus:outline-none focus:bg-white"
+              className="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4  leading-tight focus:outline-none focus:bg-white"
               id="grid-first-name"
               type="text"
               name="title"
               placeholder="apple ..."
               required
             />
-            {/* <p class="text-red-500 text-xs italic">
+            {/* <p className="text-red-500 text-xs italic">
               Please fill out this field.
             </p> */}
           </div>
-          <div class="w-full md:w-1/2 px-3">
-            <label
-              class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-              for="grid-last-name"
-            >
+          <div className="w-full md:w-1/2 px-3">
+            <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
               brand name
             </label>
             <input
               defaultValue={brand || ""}
               onChange={onChange}
-              class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               id="grid-last-name"
               type="text"
               name="brand"
@@ -155,17 +152,17 @@ export default function AddFormLayout({ setOpen }) {
               required
             />
           </div>
-          <div class="w-full md:w-1/2 px-3">
+          <div className="w-full md:w-1/2 px-3">
             <label
-              class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-              for="grid-last-name"
+              className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+              htmlFor="grid-last-name"
             >
               category
             </label>
             <input
               defaultValue={category || ""}
               onChange={onChange}
-              class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               id="grid-last-name"
               type="text"
               name="category"
@@ -173,17 +170,17 @@ export default function AddFormLayout({ setOpen }) {
               required
             />
           </div>
-          <div class="w-full md:w-1/2 px-3">
+          <div className="w-full md:w-1/2 px-3">
             <label
-              class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-              for="grid-last-name"
+              className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+              htmlFor="grid-last-name"
             >
               rating
             </label>
             <input
               defaultValue={rating || ""}
               onChange={onChange}
-              class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               id="grid-last-name"
               type="text"
               name="rating"
@@ -191,17 +188,17 @@ export default function AddFormLayout({ setOpen }) {
               required
             />
           </div>
-          <div class="w-full md:w-1/2 px-3">
+          <div className="w-full md:w-1/2 px-3">
             <label
-              class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-              for="grid-last-name"
+              className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+              htmlFor="grid-last-name"
             >
               price
             </label>
             <input
               defaultValue={price || ""}
               onChange={onChange}
-              class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               id="grid-last-name"
               type="text"
               name="price"
@@ -209,17 +206,17 @@ export default function AddFormLayout({ setOpen }) {
               required
             />
           </div>
-          <div class="w-full md:w-1/2 px-3">
+          <div className="w-full md:w-1/2 px-3">
             <label
-              class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-              for="grid-last-name"
+              className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+              htmlFor="grid-last-name"
             >
               discount Price
             </label>
             <input
               defaultValue={discountPercentage || ""}
               onChange={onChange}
-              class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               id="grid-last-name"
               type="text"
               name="discountPercentage"
@@ -227,17 +224,17 @@ export default function AddFormLayout({ setOpen }) {
               required
             />
           </div>
-          <div class="w-full md:w-1/2 px-3">
+          <div className="w-full md:w-1/2 px-3">
             <label
-              class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-              for="grid-last-name"
+              className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+              htmlFor="grid-last-name"
             >
               stock
             </label>
             <input
               defaultValue={stock || ""}
               onChange={onChange}
-              class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               id="grid-last-name"
               type="number"
               name="stock"

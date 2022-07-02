@@ -1,5 +1,6 @@
 import { all, call } from "redux-saga/effects";
 import {
+  onAddProduct,
   onDeleteProduct,
   onProductGet,
   onSearchUser,
@@ -12,6 +13,7 @@ function* rootSaga() {
     call(onSearchUser),
     call(onUpdateProduct),
     call(onDeleteProduct),
+    call(onAddProduct),
   ]);
 }
 

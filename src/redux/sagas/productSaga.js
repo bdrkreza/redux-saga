@@ -1,9 +1,11 @@
 import { call, delay, put, takeLatest } from "redux-saga/effects";
 import ProductServices from "../../service/ProductServices";
 import {
+  createProduct,
   deleteProduct,
   getProduct,
   getSearch,
+  setAddProduct,
   setProduct,
   setUpdate,
 } from "../slice/ProductSlice";
@@ -22,6 +24,16 @@ function* onSearchProductStartAsync({ payload: query }) {
     const response = yield call(ProductServices.getProductBySearch, query);
     yield delay(500);
     yield put(setProduct(response));
+  } catch (error) {
+    console.log(error);
+  }
+}
+function* onAddProductStartAsync({ payload: body }) {
+  console.log(body);
+  try {
+    const response = yield call(ProductServices.addProduct, body);
+    yield delay(500);
+    yield put(setAddProduct(response));
   } catch (error) {
     console.log(error);
   }
@@ -51,6 +63,10 @@ function* onDeleteProductStartAsync({ payload: { id } }) {
 export function* onDeleteProduct() {
   yield takeLatest(deleteProduct.type, onDeleteProductStartAsync);
 }
+export function* onAddProduct() {
+  yield takeLatest(createProduct.type, onAddProductStartAsync);
+}
+
 export function* onUpdateProduct() {
   yield takeLatest(setUpdate.type, onUpdateProductStartAsync);
 }
