@@ -5,12 +5,19 @@ const productReducer = createSlice({
   initialState: {
     data: [],
     status: "idle",
+    error: null,
+    pageLimit: 4,
+    currentPage: 0,
+    paginationMode: true,
   },
   reducers: {
     getProduct(state, action) {
       state.status = "pending";
     },
     getSearch(state, action) {
+      state.status = "pending";
+    },
+    getCategory(state, action) {
       state.status = "pending";
     },
     createProduct(state, action) {
@@ -66,6 +73,7 @@ export const {
   getSearch,
   deleteProduct,
   createProduct,
+  getCategory,
 } = productReducer.actions;
 
 export default productReducer.reducer;

@@ -10,7 +10,7 @@ class ProductService {
     return requests.get(`/products/${id}`);
   }
   getProductByCategory(category) {
-    return requests.get(`/products/category/${category}`);
+    return requests.get(`/products?category=${category}`);
   }
   getProductBySearch(query) {
     return requests.get(`/products?q=${query}`);

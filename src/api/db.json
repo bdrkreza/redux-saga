@@ -38,21 +38,6 @@
       ]
     },
     {
-      "id": 3,
-      "title": "Samsung Universe 9",
-      "description": "Samsung's new variant which goes beyond Galaxy to the Universe",
-      "price": 1249,
-      "discountPercentage": 15.46,
-      "rating": 4.09,
-      "stock": 36,
-      "brand": "Samsung",
-      "category": "smartphones",
-      "thumbnail": "https://dummyjson.com/image/i/products/3/thumbnail.jpg",
-      "images": [
-        "https://dummyjson.com/image/i/products/3/1.jpg"
-      ]
-    },
-    {
       "id": 4,
       "title": "OPPOF19",
       "description": "OPPO F19 is officially announced on April 2021.",
@@ -215,25 +200,6 @@
         "https://dummyjson.com/image/i/products/12/3.png",
         "https://dummyjson.com/image/i/products/12/4.jpg",
         "https://dummyjson.com/image/i/products/12/thumbnail.jpg"
-      ]
-    },
-    {
-      "id": 13,
-      "title": "Fog Scent Xpressio Perfume",
-      "description": "Product details of Best Fog Scent Xpressio Perfume 100ml For Men cool long lasting perfumes for Men",
-      "price": 13,
-      "discountPercentage": 8.14,
-      "rating": 4.59,
-      "stock": 61,
-      "brand": "Fog Scent Xpressio",
-      "category": "fragrances",
-      "thumbnail": "https://dummyjson.com/image/i/products/13/thumbnail.webp",
-      "images": [
-        "https://dummyjson.com/image/i/products/13/1.jpg",
-        "https://dummyjson.com/image/i/products/13/2.png",
-        "https://dummyjson.com/image/i/products/13/3.jpg",
-        "https://dummyjson.com/image/i/products/13/4.jpg",
-        "https://dummyjson.com/image/i/products/13/thumbnail.webp"
       ]
     },
     {

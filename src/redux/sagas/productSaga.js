@@ -3,6 +3,7 @@ import ProductServices from "../../service/ProductServices";
 import {
   createProduct,
   deleteProduct,
+  getCategory,
   getProduct,
   getSearch,
   setAddProduct,
@@ -28,8 +29,18 @@ function* onSearchProductStartAsync({ payload: query }) {
     console.log(error);
   }
 }
+
+function* onCategoryProductStartAsync({ payload: category }) {
+  console.log(category);
+  try {
+    const response = yield call(ProductServices.getProductByCategory, category);
+    yield delay(500);
+    yield put(setProduct(response));
+  } catch (error) {
+    console.log(error);
+  }
+}
 function* onAddProductStartAsync({ payload: body }) {
-  console.log(body);
   try {
     const response = yield call(ProductServices.addProduct, body);
     yield delay(500);
@@ -77,4 +88,7 @@ export function* onProductGet() {
 
 export function* onSearchUser() {
   yield takeLatest(getSearch.type, onSearchProductStartAsync);
+}
+export function* onCategoryProduct() {
+  yield takeLatest(getCategory.type, onCategoryProductStartAsync);
 }
